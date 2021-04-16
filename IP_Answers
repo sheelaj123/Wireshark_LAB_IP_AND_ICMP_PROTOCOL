@@ -1,0 +1,50 @@
+Q.1 Select the first ICMP Echo Request message sent by your computer, and expand
+the Internet Protocol part of the packet in the packet details window.
+What is the IP address of your computer..?
+ANS:---> The IP address of my computer is 192.168.43.191
+
+
+Q.2 Within the IP packet header, what is the value in the upper layer protocol field?
+ANS:---> The value in the upper layer protocol field is ICMP 1 or (0x01)
+
+
+Q.3 How many bytes are in the IP header? How many bytes are in the payload of the
+IP datagram? Explain how you determined the number of payload bytes.
+ANS:--- Here as shown in figure , 20 bytes in the IP header, and 96 bytes total length, this
+gives 76 bytes in the payload of the IP datagram.
+
+
+Q.4 Has this IP datagram been fragmented? Explain how you determined whether
+or not the datagram has been fragmented.
+ANS:--- The more fragments bit = 0, so the data is not fragmented.
+
+
+Q.5 Which fields in the IP datagram always change from one datagram to the next
+within this series of ICMP messages sent by your computer?
+ANS:--- In the Identification, Time to live and Header checksum always change.
+
+
+Q.6 Which fields stay constant? Which of the fields must stay constant? Which fields
+must change? Why?
+ANS:--- The fields that stay constant across the IP datagrams are:
+• Version (since we are using IPv4 for all packets)
+• header length (since these are ICMP packets)
+• source IP (since we are sending from the same source)
+• destination IP (since we are sending to the same dest)
+• Upper Layer Protocol (since these are ICMP packets)
+The fields that must stay constant are:
+• Version (since we are using IPv4 for all packets)
+• header length (since these are ICMP packets)
+• source IP (since we are sending from the same source)
+• destination IP (since we are sending to the same dest)
+• Upper Layer Protocol (since these are ICMP packets)
+The fields that must change are:
+• Identification(IP packets must have different ids)
+• Time to live (traceroute increments each subsequent packet)
+• Header checksum (since header changes, so must checksum)
+
+Q.7 Describe the pattern you see in the values in the Identification field of the IP
+datagram..?
+ANS:--- The pattern is that the IP header Identification fields increment with each ICMP
+Echo (ping) request.
+
