@@ -1,0 +1,109 @@
+                   **Internet Control Message Protocol(ICMP)** 
+                   
+                   
+Since, IP does not have a inbuilt mechanism for sending error and control
+messages. It depends on Internet Control Message Protocol(ICMP) to provide an
+error control. It is used for reporting errors and management queries.
+Let’s begin this adventure by opening the Windows Command Prompt application
+(which can be found in your Accessories folder).
+• Now, Start up the Wireshark packet sniffer, and begin Wireshark packet capture.
+• The ping command is in c:\windows\system64, so type either “ping –n 10
+hostname” or “c:\windows\system64\ping –n 10 hostname” in the MS-DOS
+command line (without quotation marks), where hostname is a host on another
+continent. The argument“-n 10” indicates that 10 ping messages should be sent.
+Then run the Ping program by typing return.
+• When the Ping program terminates, stop the packet capture in Wireshark.
+the source ping program is in Massachusetts and the destination Ping program is in
+Hong Kong. From this window we see that the source ping
+program sent 10 query packets and received 10 responses. Note also that for each
+response, the source calculates the round-trip time (RTT), which for the 10 packets
+is on average 173msec.
+
+Q.1 What is the IP address of your host? What is the IP address of the destination host.?
+ANS:--- The IP address of my host is 192.168.43.191 , And The IP address of the
+destination host is 143.89.12.134
+
+
+Q.2 Why is it that an ICMP packet does not have source and destination port
+numbers?
+ANS:---The ICMP packet does not have source and destination port numbers because it
+was designed to communicate network-layer information between hosts and routers, not
+between application layer processes.
+
+
+Q.3 Examine one of the ping request packets sent by your host. What are the ICMP
+type and code numbers? What other fields does this ICMP packet have? How
+many bytes are the checksum, sequence number and identifier fields?
+ANS:--- The ICMP type is 8 (as shown in figure) , and the code number is 0. The ICMP
+packet also has checksum, identifier, sequence number, and data fields. The checksum,
+sequence number and identifier fields are two bytes each.
+
+Q.4 Examine the corresponding ping reply packet. What are the ICMP type and code
+numbers? What other fields does this ICMP packet have? How many bytes are the
+checksum, sequence number and identifier fields?
+ANS:--- The ICMP type is 0, and the code number is 0. The ICMP packet also has checksum,
+identifier, sequence number, and data fields. In my case ,The checksum, sequence number
+and identifier fields are one bytes each.
+
+(ICMP and Traceroute)
+In my case, we have to implemented Traceroute in Windows.
+the source sends a series of ICMP packets to the target destination. For both
+operating systems, the program sends the first packet with TTL=1, the second
+packet with TTL=2, and so on. Recall that a router will decrement a packet’s TTL
+value as the packet passes through the router. When a packet arrives at a router
+with TTL=1, the router sends an ICMP error packet back to the source.
+In the following, we’ll use the native Windows tracert program by using ping
+plotter.
+Doing the following things:-
+• Let’s begin by opening the Windows Command Prompt application (which can be
+found in your Accessories folder).
+• Start up the Wireshark packet sniffer, and begin Wireshark packet capture.
+• The tracert command is in c:\windows\system64, so type either “tracert
+hostname” or “c:\windows\system64\tracert hostname” in the MS-DOS command
+line (without quotation marks), where hostname is a host on another
+continent.(Note that on a Windows machine, the command is “tracert” and not
+“traceroute”.)
+And Then run the Traceroute program by typing return.
+
+Q.5 What is the IP address of your host? What is the IP address of the target
+destination host?
+ANS:--- The IP address of my host is 192.168.43.191 , And The IP address of the
+destination host is 128.93.162.83( as shown in below figure ).
+
+
+Q.6 If ICMP sent UDP packets instead (as in Unix/Linux), would the IP protocol
+number still be 01 for the probe packets? If not, what would it be?
+ANS:--- No , If ICMP sent UDP packets instead, the IP protocol number should be 0x11
+
+
+Q.7 Examine the ICMP echo packet in your screenshot. Is this different from the
+ICMP ping query packets in the first half of this lab? If yes, how so?
+ANS:--- The ICMP echo packet has the same fields as the ping query packets.(As shown in
+below figure)
+
+
+Q.8 Examine the ICMP error packet in your screenshot. It has more fields than the
+ICMP echo packet. What is included in those fields?
+ANS:--- The ICMP error packet is not the same as the ping query packets. It contains both
+the IP header and the first 8 bytes of the original ICMP packet .
+
+
+
+Q.9 Examine the last three ICMP packets received by the source host. How are these
+packets different from the ICMP error packets? Why are they different?
+ANS:--- The last three ICMP packets are message type 0 (echo reply) rather than 11 (TTL
+expired). They are different because the datagrams have made it all the way to the
+destination host before the TTL expired.
+
+
+Q.10 Within the tracert measurements, is there a link whose delay is significantly
+longer than others? Refer to the screenshot in Figure 4, is there a link whose
+delay is significantly longer than others? On the basis of the router names, can
+you guess the location of the two routers on the end of this link?
+ANS:--- There is a link between the steps 11 and 12 that has a significantly
+longer delay. This is a transatlantic link from New York to Aubervilliers, France., the link is
+from New York to Pastourelle, France.
+
+
+
+Thanks for watching my notes...!
