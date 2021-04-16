@@ -89,3 +89,14 @@ Q.13 What fields change in the IP header between the first and second fragment..
 ANS:--- The IP header fields that changed between the fragments are: total length, flags,
 fragment offset, and checksum.
 
+
+Q.14 How many fragments were created from the original datagram?
+ANS:--- After switching to 3500, there are 3 packets created from the original datagram, As
+shown in given figure.
+
+
+Q.15 What fields change in the IP header among the fragments?
+ANS:---The IP header fields that changed between all of the packets
+are: fragment offset, and checksum.
+
+
