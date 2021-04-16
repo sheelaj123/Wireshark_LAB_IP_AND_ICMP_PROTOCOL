@@ -48,3 +48,44 @@ datagram..?
 ANS:--- The pattern is that the IP header Identification fields increment with each ICMP
 Echo (ping) request.
 
+
+Q.8 What is the value in the Identification field and the TTL field?
+ANS:--- Value of Identification = 37504
+Value of TTL (Time to live)=242
+
+
+Q.9 Do these values remain unchanged for all of the ICMP TTL-exceeded replies
+sent to your computer by the nearest (first hop) router? Why?
+ANS:--- identification field changes for all the ICMP TTL-exceeded replies because
+the identification field is a unique value. When two or more IP datagrams have the
+same identification value, then it means that these IP datagrams are fragments of a
+single large IP datagram. The TTL field remains unchanged because the TTL for the
+first hop router is always the same.
+
+
+-:Fragmentation :-
+Q.10 Find the first ICMP Echo Request message that was sent by your computer
+after you changed the Packet Size in pingplotter to be 2000. Has that message been
+fragmented across more than one IP datagram?
+ANS:--- Yes, this packet has been fragmented across more than one IP datagram.
+
+
+Q.11 Print out the first fragment of the fragmented IP datagram. What information
+in the IP header indicates that the datagram been fragmented? What information in
+the IP header indicates whether this is the first fragment versus a latter fragment?
+How long is this IP datagram?
+ANS:--- The Flags bit for more fragments is set, indicating that the datagram has
+been fragmented. Since the fragment offset is 0, we know that this is the first
+fragment. This first datagram has a total length of 1500, including the header.
+
+Q.12 Print out the second fragment of the fragmented IP datagram. What
+information in the IP header indicates that this is not the first datagram fragment?
+Are the more fragments? How can you tell?
+ANS:--- We can tell that this is not the first fragment, since the fragment offset is 1480. It is
+the last fragment, since the more fragments flag is not set.
+
+
+Q.13 What fields change in the IP header between the first and second fragment..?
+ANS:--- The IP header fields that changed between the fragments are: total length, flags,
+fragment offset, and checksum.
+
